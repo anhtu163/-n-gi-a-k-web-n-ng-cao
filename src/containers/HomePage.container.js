@@ -9,7 +9,8 @@ const mapStateToProps = (st)=>{
       name: st.LoginReducer.name,
       token: st.LoginReducer.token,
       isPlay: st.HomePageReducer.isPlay,
-      isMenu: st.HomePageReducer.isMenu
+      isMenu: st.HomePageReducer.isMenu,
+      isUpdate: st.InforUserReducer.isUpdate
     }
   };
 
@@ -27,6 +28,12 @@ const mapStateToProps = (st)=>{
       },
       closeMenu: ()=>{
         dispatch(action.closeMenu())
+      },
+      getUser: (token)=>{
+        dispatch(action.getUserRequest(token))
+      },
+      getUserHome: (token)=>{
+        dispatch(action.getUserHomeRequest(token))
       }
     }
   };

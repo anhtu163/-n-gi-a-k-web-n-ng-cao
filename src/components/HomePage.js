@@ -17,15 +17,27 @@ export default class HomePage extends PureComponent {
   render(){
     const st = this.props;
 
-    if(st.isPlay){
-      return <Redirect to='/'/>
-    }
+    
     if (st.token === 'err') {
       return <Redirect to="/login" />;
     }
     if (st.token === '') {
       return <Redirect to="/login" />;
     }
+
+    if(st.isPlay){
+      return <Redirect to='/'/>
+    }
+
+    if(st.isUpdate){
+      return <Redirect to='/infor'/>
+    }
+
+    // st.getUserHome(st.token)
+    
+
+   
+    
         return (<div>
             <AppBar position="static">
               <Toolbar>
@@ -46,7 +58,8 @@ export default class HomePage extends PureComponent {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={e=>{ 
-                    e.preventDefault()                 
+                    e.preventDefault()   
+                    st.getUserHome(st.token)              
                     st.openMenu(e.currentTarget) 
                 }}
                 color="inherit">
@@ -66,13 +79,17 @@ export default class HomePage extends PureComponent {
                 }}
                 open={Boolean(st.isMenu)}>
                 <MenuItem disabled>{st.name}</MenuItem>
-                <MenuItem >Thông tin cá nhân</MenuItem>
-                <MenuItem >Tài khoản của tôi</MenuItem>
                 <MenuItem onClick={e=>{
                   e.preventDefault() 
+                  st.closeMenu()
+                  st.getUser(st.token)}}> Cập nhật thông tin cá nhân</MenuItem>
+                <MenuItem onClick={e=>{
+                  e.preventDefault() 
+                  st.closeMenu()
                   st.logOut()}}>Đăng xuất</MenuItem>
                 <MenuItem onClick={e=>{
                   e.preventDefault() 
+
                   st.closeMenu()}}>Đóng</MenuItem>
               </Menu>
               

@@ -5,9 +5,9 @@ import { BrowserRouter as Router,
     } from 'react-router-dom';
 import LoginContainer from '../containers/Login.container'
 import GameContainer from '../containers/Game.container';
-// import HomePage from "./HomePage";
 import RegisterContainer from '../containers/Register.container';
 import HomePageContainer from '../containers/HomePage.container';
+import InforUserContainer from '../containers/InforUser.container';
 
 const Root = () => (
     <Router>
@@ -22,6 +22,9 @@ const Root = () => (
             </Route>
             <Route path="/home">
               <HomePageContainer/>
+            </Route>
+            <Route path="/infor">
+              <InforUserContainer/>
             </Route>
             <Route path="/">
               <GameContainer/>

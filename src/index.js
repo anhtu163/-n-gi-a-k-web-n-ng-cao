@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 // import {Provider} from 'react-redux';
-
+// import throttle from 'lodash/throttle';
 import {createStore, applyMiddleware}  from 'redux';
 // import {BrowseRouter as Router, Route, Switch} from 'react-router-dom';
 import myReducers from './reducers/index';
@@ -15,8 +15,38 @@ import './index.css';
 
 import * as serviceWorker from './serviceWorker';
 
+// const loadState = () => {
+//     try {
+//       const serializedState = localStorage.getItem('state');
+  
+//       if(serializedState === null) {
+//         return undefined;
+//       }
+  
+//       return JSON.parse(serializedState);
+//     } catch (e) {
+//       return undefined;
+//     }
+//   };
+  
+//   const saveState = (state) => {
+//     try {
+//       const serializedState = JSON.stringify(state);
+  
+//       localStorage.setItem('state', serializedState);
+//     } catch (e) {
+//       // Ignore write errors;
+//     }
+//   };
+  
+ // const peristedState = loadState();
+
 // container
-const store = createStore(myReducers,applyMiddleware(thunk))
+const store = createStore(myReducers,applyMiddleware(thunk)) /* peristedState, */
+
+// store.subscribe(throttle(() => {
+//     saveState(store.getState());
+//   }, 1000));
 
 ReactDOM.render(
     <Provider store={store}>

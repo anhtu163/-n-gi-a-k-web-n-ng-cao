@@ -23,13 +23,16 @@ export default class Login extends React.Component {
 
   render() {
     const st = this.props;
-    if (st.isLogin) {
-      return <Redirect to="/home" />;
-    }
+    
     if (st.token === 'err') {
 
       this.err = 'Username hoặc Password không đúng!!!';
     }
+
+    if (st.isLogin) {
+      return <Redirect to="/home" />;
+    }
+
     return (
       <div className="loginLayout">
         <Container component="main" maxWidth="xs">

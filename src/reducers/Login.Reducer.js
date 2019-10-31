@@ -18,7 +18,7 @@ const initialState = {
          
           st.token = action.data.res.data.token;
           st.name = action.data.res.data.user.name;
-          st.isLogin = true;
+          st.isLogin = !state.isLogin;
         } catch (err) {
           
           st.token = 'err';
@@ -29,8 +29,8 @@ const initialState = {
         const st = { ...state };
         st.name = '';
         st.token = '';
-        st.isLogin = false;
-        st.isPlay = false;
+        st.isLogin = !state.isLogin;
+        st.isPlay = !state.isPlay;
         st.username = '';
         st.password = '';
         return st;

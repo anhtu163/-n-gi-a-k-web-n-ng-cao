@@ -10,8 +10,13 @@ export const REGISTER = 'REGISTER'
 export const LOGOUT = 'LOGOUT'
 export const PLAY = 'PLAY'
 export const BACK = 'BACK'
+export const BACK_UPDATE = 'BACK_UPDATE'
 export const OPEN_MENU = 'OPEN_MENU'
 export const CLOSE_MENU = 'CLOSE_MENU'
+export const GET_USER = 'GET_USER'
+export const UPDATE = 'UPDATE'
+export const GET_USER_HOME = 'GET_USER_HOME'
+
 
 export const saveHistory = (history,squares,currentMove,i,COL,ROW) =>({
     type: HISTORIES,
@@ -34,14 +39,20 @@ export const setWinner = (history,squares,currentMove,i,COL,ROW,winner)=>({
     winner
 })
 
+// jump to 1 time in history list
+
 export const jumpTo = (step)=>({
     type: JUMP_TO,
     step
 })
 
+// sort history list
+
 export const sortF = () =>({
     type: SORT,  
 })
+
+// log in
 
 function OnClickLogin(username,password) {
     const res = axios.post('http://localhost:4000/user/login',{
@@ -74,6 +85,8 @@ export const loginRequest = (username, password) =>{
     }
 }
 
+// register
+
 function OnclickRegister(name,phone, username, password) {
     const res = axios
       .post('https://restfulapi1612839.herokuapp.com/user/register', {
@@ -103,11 +116,14 @@ function OnclickRegister(name,phone, username, password) {
     };
   };
   
+  // log out
   export const LogOut = () => {
     return {
       type: LOGOUT
     };
   };
+
+  // change from homepage to gamepage
 
   export const play = (name,token) =>{
     return {
@@ -119,12 +135,28 @@ function OnclickRegister(name,phone, username, password) {
     }
   }
 
-  
+  // back from gamepage to homepage
+
   export const back = () =>{
     return {
       type: BACK
     }
   }
+
+  // back from updatepage to homepage
+
+  export const backUpdate = (name) =>{
+    return {
+      type: BACK_UPDATE,
+      data:{
+        name
+      }
+      
+    }
+  }
+
+
+  // open and close menu on Homepage
 
   export const openMenu = (value)=>{
     return {
@@ -140,3 +172,88 @@ function OnclickRegister(name,phone, username, password) {
       type: CLOSE_MENU,
     }
   }
+
+
+  // Get info user
+
+  function onClickGetUser(token){
+    const res = axios.get('http://localhost:4000/me',{
+      headers:{Authorization: `Bearer ${token}`}
+    }).catch(err=>{
+      return err
+    })
+    console.log(res);
+    return res;
+  }
+
+  export const getUser = (token,res)=>{
+    return {
+      type: GET_USER,
+      data:{
+        token,
+        res
+      }
+    }
+  }
+
+  export const getUserHome = (token,res)=>{
+    return {
+      type: GET_USER_HOME,
+      data:{
+        token,
+        res
+      }
+    }
+  }
+
+  export const getUserRequest = (token)=>{
+    return( dispatch=>{
+      return onClickGetUser(token).then(res=>{
+        dispatch(getUser(token,res));
+      })
+    })
+  }
+
+  export const getUserHomeRequest = (token)=>{
+    return( dispatch=>{
+      return onClickGetUser(token).then(res=>{
+        dispatch(getUserHome(token,res));
+      })
+    })
+  }
+
+
+
+  // update info user
+
+  function onClickUpdate(username,name,phone){
+    const res = axios.post('http://localhost:4000/user/update',{
+      username,
+      name,
+      phone
+    }).catch(err=>{
+      return err
+    })
+    return res
+  }
+
+  export const update = (username,name,phone,res) =>{
+    return{
+      type: UPDATE,
+      data:{
+        username,
+        name,
+        phone,
+        res
+      }
+    }
+  }
+  export const updateRequest = (username,name,phone) =>{
+
+    return (dispatch=>{
+      return onClickUpdate(username,name,phone).then(res=>{
+        dispatch(update(username,name,phone,res))
+      })
+    })
+  }
+  

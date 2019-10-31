@@ -2,7 +2,7 @@ export const initialState = {
     token: '',
     name: '',
     isPlay: false,
-    isMenu: false
+    isMenu: false,
     
   };
 
@@ -11,7 +11,6 @@ const HomePageReducer = (state = initialState,action) => {
         case "PLAY":
             return {
                 ...state,
-                name: action.data.name,
                 token: action.data.token,
                 isPlay: true
             }
