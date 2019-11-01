@@ -53,10 +53,12 @@
   margin: 1px !important;
 }
 .menu{
-  position: relative;
-  left: 20% !important;
+  display: flex !important;
+  justify-content: space-around !important;
+  margin-left: 30px !important;
   border: 1px solid white !important;
 }
+
 .menu:hover{
   color: yellow;
   border: 1px solid yellow !important;
@@ -81,7 +83,7 @@
 
 .account{
   position: relative;
-  right : -60%;
+  right : -50%;
   
 }
 
@@ -91,7 +93,7 @@
 
 .user-name{
   position: relative;
-  right : -60%;
+  right : -50%;
 }
 
 .user-name:hover{

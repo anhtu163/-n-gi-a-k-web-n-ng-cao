@@ -20,6 +20,7 @@ export default class InforUser extends React.PureComponent {
     this.password = "";
     this.name = "";
     this.phone = "";
+    this.err = "";
   }
 
   render() {
@@ -94,7 +95,7 @@ export default class InforUser extends React.PureComponent {
                   />
                 </Grid>
               </Grid>
-              <div className="ErrorRegister">{this.err}</div>
+              <div className="Error">{this.err}</div>
               <div className="GridForm">
                 <Button
                   fullWidth
@@ -103,11 +104,13 @@ export default class InforUser extends React.PureComponent {
                   onClick={event => {
                     event.preventDefault();
                     st.updateUser(this.username,this.name,this.phone)
-                   // st.backUpdate()
+                    this.err = "Cập nhật thành công"
                   }}>
                   Cập nhật
                 </Button>
               </div>
+              
+
               <div className="GridForm">
                 <Button
                   fullWidth
@@ -126,7 +129,8 @@ export default class InforUser extends React.PureComponent {
         </Container>
         <div className="user-info">
         <Button className='back-home' color='primary' onClick={()=>{
-                st.backUpdate(this.name)
+                st.backUpdate()
+                st.logIn(st.username,st.password)
                 }}>Quay về trang chủ</Button>
         </div>
       </div>

@@ -39,7 +39,7 @@ import * as serviceWorker from './serviceWorker';
 //     }
 //   };
   
- // const peristedState = loadState();
+//  const peristedState = loadState();
 
 // container
 const store = createStore(myReducers,applyMiddleware(thunk)) /* peristedState, */

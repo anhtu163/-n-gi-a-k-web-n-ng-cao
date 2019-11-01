@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-// import {connect} from 'react-redux'
-// import * as action from '../actions/actions'
 import { Redirect } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
-import Board , {calculateWinner} from './Board';
+import Board , {calculateWinner,AI} from './Board';
 
 
 const ROW = 20;
@@ -12,6 +10,8 @@ const COL = 20;
 
 
 class Game extends Component {
+
+ 
 
   handleClick(i) {
     const st = this.props;
@@ -30,14 +30,19 @@ class Game extends Component {
     }
     else{
 
-
       st.saveHistory(history,squares,currentMove,i,COL,ROW);
-     
+
     }
   }
 
+  
+
+  
+
   render() {
     const st = this.props;
+
+
 
     if (st.token === 'err') {
       return <Redirect to="/login" />;
@@ -49,9 +54,14 @@ class Game extends Component {
       return <Redirect to="/home" />;
     }
 
-
     const history = st.history.slice();
     const current = history[st.stepNumber];
+    const squares = current.squares.slice();
+
+    if(AI(squares) !== -1 && st.xIsNext === false){
+      console.log(AI(squares))
+      this.handleClick(AI(squares))
+    }
     
 
     if(!st.isSort){
@@ -71,7 +81,7 @@ class Game extends Component {
       );
     });
 
-    const status = calculateWinner(current.squares) === false ? `Lượt đi của: ${ st.xIsNext ? 'X' : 'O'}` : `Người chiến thắng là: ${ st.winner}`;
+    const status = calculateWinner(current.squares) === false ? `Lượt đi của: ${ st.xIsNext ? 'X' : 'O'}` : `Người chiến thắng là: ${ calculateWinner(current.squares)}`;
 
     return (
       <div className="game">
@@ -97,36 +107,4 @@ class Game extends Component {
 }
 
 export default Game
-// const mapStateToProps = (state)=>{
-//   return {
-//     history: state.history,
-//     stepNumber: state.stepNumber,
-//     xIsNext: state.xIsNext,
-//     winner: state.winner,
-//     isSort: state.isSort
-    
-//   }
-// };
 
-// const mapDispatchToProps = (dispatch) =>{
-
-//   return{
-//     setWinner: (history,squares,currentMove,i,col,row,winner) =>{
-//       dispatch(action.setWinner(history,squares,currentMove,i,col,row,winner));
-//     },
-//     saveHistory: (history,squares,currentMove,i,col,row) =>{
-//       dispatch(action.saveHistory(history,squares,currentMove,i,col,row));
-//     },
-//     jumpTo: (step)=>{
-//       dispatch(action.jumpTo(step))
-//     },
-//     sortHistory: ()=>{
-//       dispatch(action.sortF())
-//     }
-//   }
-// };
-
-
-
-
-// export default connect(mapStateToProps,mapDispatchToProps) (Game);  

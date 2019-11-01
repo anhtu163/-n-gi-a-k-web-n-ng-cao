@@ -6,7 +6,7 @@ const mapstToProps = state => {
   const st = state.InforUserReducer;
   return {
     username: state.LoginReducer.username,
-    password: st.password,
+    password: state.LoginReducer.password,
     name: st.name,
     phone: st.phone,
     token: state.LoginReducer.token,
@@ -23,14 +23,17 @@ const mapDispatchToProps = dispatch => {
     getUserHome: (token)=>{
       dispatch(actions.getUserRequest(token))
     },
-    backUpdate: (name) => {
-        dispatch(actions.backUpdate(name))
+    backUpdate: () => {
+        dispatch(actions.backUpdate())
     },
     updateUser: (username,name,phone) =>{
         dispatch(actions.updateRequest(username,name,phone))
     },
     logOut: ()=>{
         dispatch(actions.LogOut())
+    },
+    logIn: (username,password) =>{
+      dispatch(actions.loginRequest(username,password));
     }
 
   };

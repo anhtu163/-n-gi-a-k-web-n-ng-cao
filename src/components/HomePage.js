@@ -32,25 +32,19 @@ export default class HomePage extends PureComponent {
     if(st.isUpdate){
       return <Redirect to='/infor'/>
     }
-
-    // st.getUserHome(st.token)
-    
-
-   
-    
         return (<div>
             <AppBar position="static">
               <Toolbar>
                 
                 <Typography variant="h6" className='title'>
-                  TIC TAC TOE
+                  CARO VIỆT NAM
                 </Typography>
                 <Button className='menu' color='inherit' onClick={()=>{
                   st.play(st.name,st.token);
                 }}>Chơi với máy</Button>
-                {/* <Button className='menu' color='inherit' onClick={()=>{
-                  st.logOut();
-                }}>Log Out</Button> */}
+                <Button className='menu' color='inherit' onClick={()=>{
+                  st.play(st.name,st.token);
+                }}>Tìm phòng</Button>
                 <IconButton
                 
                 className="account"
@@ -64,7 +58,9 @@ export default class HomePage extends PureComponent {
                 }}
                 color="inherit">
                 <AccountCircle />
+                
               </IconButton>
+              <Typography className='user-name'>Xin chào, {st.name}</Typography>
               <Menu
                 id="menu-appbar"
                 anchorEl={st.isMenu}
@@ -74,8 +70,8 @@ export default class HomePage extends PureComponent {
                 }}
                 keepMounted
                 transformOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 200,
+                  vertical:  -50,
+                  horizontal: 280,
                 }}
                 open={Boolean(st.isMenu)}>
                 <MenuItem disabled>{st.name}</MenuItem>
@@ -90,10 +86,10 @@ export default class HomePage extends PureComponent {
                 <MenuItem onClick={e=>{
                   e.preventDefault() 
 
-                  st.closeMenu()}}>Đóng</MenuItem>
+                  st.closeMenu()}} style = {{color : 'primary'}}> Đóng </MenuItem>
               </Menu>
               
-              <Typography className='user-name'>Xin chào, {st.name}</Typography>
+              
               </Toolbar>
             </AppBar>
           </div>);

@@ -8,6 +8,8 @@
   border: 2px solid #3F51B5;
   border-radius: 25px ;
   outline: none;
+  margin: 5px;
+  margin-bottom: 10px;
   
 }
 .start:hover{
@@ -23,7 +25,7 @@ body {
 }
 
 ol, ul {
-  padding-left: 20px;
+  padding-left: 30px;
 }
 .board-row{
   position: absolute;
@@ -123,15 +125,16 @@ a:hover{
   position: absolute;
   left: 3%;
   top: 3%;
-  padding: 10px;
+  padding: 13px;
   border: #3F51B5 2px solid;
   border-radius: 20px;
-  height: 500px;
+  height: 530px;
   width: 300px;
   background: white;
 }
 .list{
   margin: 8px;
+  margin-left: 10px;
   text-decoration: none;
   background: #fff;
   border: none;

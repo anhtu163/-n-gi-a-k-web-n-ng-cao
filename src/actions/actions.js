@@ -145,12 +145,10 @@ function OnclickRegister(name,phone, username, password) {
 
   // back from updatepage to homepage
 
-  export const backUpdate = (name) =>{
+  export const backUpdate = () =>{
     return {
       type: BACK_UPDATE,
-      data:{
-        name
-      }
+      
       
     }
   }

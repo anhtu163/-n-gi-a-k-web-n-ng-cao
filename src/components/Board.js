@@ -109,11 +109,75 @@ export const calculateWinner = (squares) => {
         checkDiagonal1(parseInt(i / COL, 10), parseInt(i % COL, 10), squares) ||
         checkDiagonal2(parseInt(i / COL, 10), parseInt(i % COL, 10), squares)
       ) {
-        return true;
+        return squares[i];
       }
     }
   }
   return false;
+}
+
+
+
+export const clone = (board) => {
+  return board.slice(0)
+}
+
+export const move = (m, player, board) => {
+  const newBoard = clone(board)
+
+  if (newBoard[m] === 0) {
+    newBoard[m] = player
+    return newBoard
+  }
+  return null
+}
+
+export const minMoveValue = (board) => {
+  if (calculateWinner(board) === 'X') return Infinity
+  if (calculateWinner(board) === 'O') return -Infinity
+
+  let bestMoveValue = Infinity
+
+  for (let i = 0; i < board.length; i+=1) {
+    const newBoard = this.move(i, 'O', board)
+    if (newBoard) {
+      const predictedMoveValue = this.maxMoveValue(newBoard)
+      if (predictedMoveValue < bestMoveValue) bestMoveValue = predictedMoveValue
+    }
+  }
+
+  return bestMoveValue
+}
+
+export const  maxMoveValue = (board) => {
+
+  if (calculateWinner(board) === 'X') return Infinity
+  if (calculateWinner(board) === 'O') return -Infinity
+  
+
+  let bestMoveValue = -Infinity
+
+  for (let i = 0; i < board.length; i+=1) {
+    const newBoard = this.move(i, this.maxPlayer, board)
+    if (newBoard) {
+      const predictedMoveValue = this.minMoveValue(newBoard)
+      if (predictedMoveValue > bestMoveValue) bestMoveValue = predictedMoveValue
+    }
+  }
+
+  return bestMoveValue
+}
+
+export const AI = (squares) => {
+
+  for(let i = 0 ;i< squares.length ; i+=1 ){
+    const pos = Math.random()*(400) + 1
+    if(squares[Math.ceil(pos)] === null){
+      return Math.ceil(pos);
+    }
+  }
+  return -1
+  
 }
 
 const Board = (prps) => {

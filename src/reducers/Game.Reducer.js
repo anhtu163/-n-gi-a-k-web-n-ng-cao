@@ -64,7 +64,17 @@ const GameReducers = (state = initialState,action) =>{
     case "BACK":
       return{
         ...state,
-        isPlay: !state.isPlay
+        history: [{
+          squares: Array(400).fill(null),
+          mv: 0,
+          highlight:false
+        }],
+        stepNumber: 0,
+        xIsNext: true,
+        winner: null,
+        isSort: true,
+        isPlay: false,
+
       }
     default:
         return state

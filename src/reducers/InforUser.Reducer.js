@@ -12,7 +12,7 @@ const initialState = {
       case "GET_USER": {
         return{
             ...state,
-            username : action.data.res.username,
+            username : action.data.res.data.username,
             name : action.data.res.data.name,
             phone : action.data.res.data.phone,
             isUpdate: true
@@ -22,7 +22,7 @@ const initialState = {
       case "GET_USER_HOME":{
         return{
           ...state,
-          username : action.data.res.username,
+          username : action.data.res.data.username,
           name : action.data.res.data.name,
           phone : action.data.res.data.phone
         }
@@ -30,13 +30,13 @@ const initialState = {
       case "BACK_UPDATE":{
         return{
             ...state,
-            isUpdate: false,
-            name: action.data.name
+            isUpdate: false
         }
       }
       case "UPDATE": {
         return{
             ...state,
+            
             username: action.data.res.data.username,
             name: action.data.res.data.name,
             phone: action.data.res.data.phone,
