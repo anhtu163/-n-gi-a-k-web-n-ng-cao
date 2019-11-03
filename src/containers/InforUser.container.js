@@ -12,6 +12,7 @@ const mapstToProps = state => {
     token: state.LoginReducer.token,
     isUpdate: st.isUpdate,
     isPlay: state.HomePageReducer.isPlay,
+    isChangePass: state.ChangePassReducer.isChangePass
   };
 };
 
@@ -22,6 +23,9 @@ const mapDispatchToProps = dispatch => {
     },
     getUserHome: (token)=>{
       dispatch(actions.getUserRequest(token))
+    },
+    accessChangePass :()=>{
+      dispatch(actions.accessChangePass())
     },
     backUpdate: () => {
         dispatch(actions.backUpdate())

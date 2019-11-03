@@ -13,27 +13,23 @@ import Container from '@material-ui/core/Container';
 import '../App.css';
 
 
-export default class InforUser extends React.PureComponent {
+export default class ChangePass extends React.PureComponent {
   constructor() {
     super();
-    this.username = "";
     this.password = "";
-    this.name = "";
-    this.phone = "";
+    this.newpassword = "";
+    this.confirm = "";
     this.err = "";
   }
 
   render() {
     const st = this.props;
-    this.username = st.username;
-    this.password = st.password;
-    this.phone = st.phone;
-    this.name = st.name;
-    if(!st.isUpdate){
-        return <Redirect to="/home" />;
-    }
-    if(st.isChangePass){
-      return <Redirect to="/changepass" />;
+
+
+    
+
+    if(!st.isChangePass){
+        return <Redirect to="/infor" />;
     }
     
     return (
@@ -46,7 +42,7 @@ export default class InforUser extends React.PureComponent {
                 <LockOutlinedIcon />
               </Avatar>
               <Typography component="h1" variant="h5">
-                Cập nhật thông tin cá nhân
+                Đổi mật khẩu
               </Typography>
             </center>
             <form className="form" noValidate>
@@ -54,32 +50,33 @@ export default class InforUser extends React.PureComponent {
                 <Grid item xs={12}>
                   <TextField
 
-                    name="Name"
+                    name="Password"
                     variant="outlined"
                     required
                     fullWidth
-                    id="Name"
-                    defaultValue = {st.name}
+                    id="Password"
+                    type = "password"
                     onChange={event => {
-                      this.name = event.target.value;
+                      this.password = event.target.value;
                     }}
-                    label="Full Name"
+                    label="Mật khẩu hiện tại"
                     autoFocus
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
                     
-                    name="Phone"
+                    name="New Password"
                     variant="outlined"
                     required
                     fullWidth
-                    id="Phone"
-                    defaultValue = {st.phone}
+                    id="New Password"
+                    type = "password"
+                    
                     onChange={event => {
-                      this.phone = event.target.value;
+                      this.newpassword = event.target.value;
                     }}
-                    label="Phone"
+                    label="Mật khẩu mới"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -87,14 +84,13 @@ export default class InforUser extends React.PureComponent {
                     variant="outlined"
                     required
                     fullWidth
-                    id="username"
-                    defaultValue = {st.username}
+                    id="confirm"
+                    type = "password"
                     onChange={event => {
-                      this.username = event.target.value;
+                      this.confirm = event.target.value;
                     }}
-                    label="Username"
-                    name="username"
-                    disabled
+                    label="Nhập lại mật khẩu mới"
+                    name="confirm"
                   />
                 </Grid>
               </Grid>
@@ -106,22 +102,7 @@ export default class InforUser extends React.PureComponent {
                   color="primary"
                   onClick={event => {
                     event.preventDefault();
-                    st.updateUser(this.username,this.name,this.phone)
-                    this.err = "Cập nhật thành công"
-                  }}>
-                  Cập nhật
-                </Button>
-              </div>
-              
-
-              <div className="GridForm">
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  onClick={event => {
-                    event.preventDefault();
-                    st.accessChangePass();
+                    st.changePass(st.username,this.password,this.newpassword);
                   }}>
                   Đổi mật khẩu
                 </Button>
@@ -132,9 +113,9 @@ export default class InforUser extends React.PureComponent {
         </Container>
         <div className="user-info">
         <Button className='back-home' color='primary' onClick={()=>{
-                st.backUpdate()
-                st.logIn(st.username,st.password)
-                }}>Quay về trang chủ</Button>
+                st.backChangePass()
+               // st.logIn(st.username,this.newpassword)
+                }}>Quay về trang thông tin cá nhân</Button>
         </div>
       </div>
     );

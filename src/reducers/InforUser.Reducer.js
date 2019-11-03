@@ -3,7 +3,8 @@ const initialState = {
     password: '',
     name: '',
     phone: '',
-    isUpdate: false
+    isUpdate: false,
+    isChangePass: false
   };
 
 

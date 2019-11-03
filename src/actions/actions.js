@@ -16,6 +16,9 @@ export const CLOSE_MENU = 'CLOSE_MENU'
 export const GET_USER = 'GET_USER'
 export const UPDATE = 'UPDATE'
 export const GET_USER_HOME = 'GET_USER_HOME'
+export const ACCESS_CHANGE_PASS = 'ACCESS_CHANGE_PASS'
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD'
+export const BACK_CHANGE_PASS = 'BACK_CHANGE_PASS'
 
 
 export const saveHistory = (history,squares,currentMove,i,COL,ROW) =>({
@@ -148,8 +151,12 @@ function OnclickRegister(name,phone, username, password) {
   export const backUpdate = () =>{
     return {
       type: BACK_UPDATE,
-      
-      
+    }
+  }
+
+  export const backChangePass = () =>{
+    return {
+      type: BACK_CHANGE_PASS,
     }
   }
 
@@ -251,6 +258,45 @@ function OnclickRegister(name,phone, username, password) {
     return (dispatch=>{
       return onClickUpdate(username,name,phone).then(res=>{
         dispatch(update(username,name,phone,res))
+      })
+    })
+  }
+
+  // chang password
+
+  export const accessChangePass = () => {
+    return{
+      type: ACCESS_CHANGE_PASS,
+    }
+  }
+
+  function onClickChangePassword(username,password,newpassword){
+    const res = axios.post('http://localhost:4000/user/changepass',{
+      username,
+      password,
+      newpassword
+    }).catch(err=>{
+      return err
+    })
+    return res
+  }
+
+  export const changePassword = (username, password,newpassword,res) =>{
+    return {
+      type: CHANGE_PASSWORD,
+      data: {
+        username,
+        password,
+        newpassword,
+        res
+      }
+    }
+  }
+
+  export const changePasswordRequest = (username, password,newpassword) =>{
+    return(dispatch =>{
+      return onClickChangePassword(username,password,newpassword).then(res=>{
+        dispatch(changePassword(username,password,newpassword,res))
       })
     })
   }

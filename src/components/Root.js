@@ -8,6 +8,7 @@ import GameContainer from '../containers/Game.container';
 import RegisterContainer from '../containers/Register.container';
 import HomePageContainer from '../containers/HomePage.container';
 import InforUserContainer from '../containers/InforUser.container';
+import ChangePassContainer from '../containers/ChangePass.container';
 
 const Root = () => (
     <Router>
@@ -25,6 +26,9 @@ const Root = () => (
             </Route>
             <Route path="/infor">
               <InforUserContainer/>
+            </Route>
+            <Route path = '/changepass'>
+              <ChangePassContainer/>
             </Route>
             <Route path="/">
               <GameContainer/>
