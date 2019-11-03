@@ -3,6 +3,7 @@ export const initialState = {
     name: '',
     isPlay: false,
     isMenu: false,
+    isLogin: true,
     
   };
 

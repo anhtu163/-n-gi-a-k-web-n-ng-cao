@@ -6,7 +6,7 @@ const mapstToProps = state => {
   const st = state.ChangePassReducer;
   return {
     username: state.LoginReducer.username,
-    password: st.password,
+    password: state.LoginReducer.password,
     newpassword: st.newpassword,
     token: st.token,
     isChangePass: st.isChangePass
@@ -19,8 +19,14 @@ const mapDispatchToProps = dispatch => {
     changePass: (username,password,newpassword)=>{
          dispatch(actions.changePasswordRequest(username,password,newpassword))
     },
-    backChangePass : () => {
-        dispatch(actions.backChangePass())
+    backChangePass : (newpassword) => {
+        dispatch(actions.backChangePass(newpassword))
+    },
+    backChangePass1 : () => {
+      dispatch(actions.backChangePass1())
+    },
+    logIn : (username,password)=>{
+      dispatch(actions.loginRequest(username,password))
     }
 
   };

@@ -19,6 +19,7 @@ export const GET_USER_HOME = 'GET_USER_HOME'
 export const ACCESS_CHANGE_PASS = 'ACCESS_CHANGE_PASS'
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD'
 export const BACK_CHANGE_PASS = 'BACK_CHANGE_PASS'
+export const BACK_CHANGE_PASS_1 = 'BACK_CHANGE_PASS_1'
 
 
 export const saveHistory = (history,squares,currentMove,i,COL,ROW) =>({
@@ -154,9 +155,18 @@ function OnclickRegister(name,phone, username, password) {
     }
   }
 
-  export const backChangePass = () =>{
+  export const backChangePass = (newpassword) =>{
     return {
       type: BACK_CHANGE_PASS,
+      data:{
+        newpassword
+      }
+    }
+  }
+
+  export const backChangePass1 = () =>{
+    return {
+      type: BACK_CHANGE_PASS_1,
     }
   }
 

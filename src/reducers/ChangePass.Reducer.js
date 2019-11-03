@@ -26,7 +26,15 @@ const initialState = {
         case "BACK_CHANGE_PASS":{
             return{
                 ...state,
-                isChangePass: false
+                isChangePass: false,
+                password: action.data.newpassword
+            }
+        }
+
+        case "BACK_CHANGE_PASS_1":{
+            return{
+                ...state,
+                isChangePass: false,
             }
         }
 

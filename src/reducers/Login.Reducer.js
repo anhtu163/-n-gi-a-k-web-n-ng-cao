@@ -33,6 +33,7 @@ const initialState = {
         st.isPlay = !state.isPlay;
         st.username = '';
         st.password = '';
+        st.isLogin = false;
         return st;
       }
       default:

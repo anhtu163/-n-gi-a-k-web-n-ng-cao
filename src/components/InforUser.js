@@ -32,6 +32,9 @@ export default class InforUser extends React.PureComponent {
     if(!st.isUpdate){
         return <Redirect to="/home" />;
     }
+    // if(!st.isChangePass){
+    //   return <Redirect to="/home" />;
+    // }
     if(st.isChangePass){
       return <Redirect to="/changepass" />;
     }
@@ -121,7 +124,7 @@ export default class InforUser extends React.PureComponent {
                   color="primary"
                   onClick={event => {
                     event.preventDefault();
-                    st.accessChangePass();
+                  //  st.accessChangePass();
                   }}>
                   Đổi mật khẩu
                 </Button>

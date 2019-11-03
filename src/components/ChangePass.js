@@ -25,12 +25,19 @@ export default class ChangePass extends React.PureComponent {
   render() {
     const st = this.props;
 
+    if(st.isChangePass === false){
+      return <Redirect to="/home" />;
+    }
+  
+    if(this.err === 1){
+      this.err = "Mật khẩu nhập lại không trùng khớp"
+    }
+    if(this.err === 2){
+      this.err = "Mật khẩu không đúng"
+    }
 
     
 
-    if(!st.isChangePass){
-        return <Redirect to="/infor" />;
-    }
     
     return (
       <div className="loginLayout">
@@ -102,7 +109,18 @@ export default class ChangePass extends React.PureComponent {
                   color="primary"
                   onClick={event => {
                     event.preventDefault();
-                    st.changePass(st.username,this.password,this.newpassword);
+                    if(this.password !== st.password)
+                    {
+                      this.err = 2
+                    }
+                    else if(this.confirm === this.newpassword){
+                      st.changePass(st.username,this.password,this.newpassword);
+                      this.password = ""
+                      this.newpassword = ""
+                      this.confirm=""
+                    }else{
+                      this.err = 1
+                    }
                   }}>
                   Đổi mật khẩu
                 </Button>
@@ -113,9 +131,15 @@ export default class ChangePass extends React.PureComponent {
         </Container>
         <div className="user-info">
         <Button className='back-home' color='primary' onClick={()=>{
-                st.backChangePass()
-               // st.logIn(st.username,this.newpassword)
-                }}>Quay về trang thông tin cá nhân</Button>
+                // st.logIn(st.username,this.newpassword)
+                
+                if(this.newpassword!==null){
+                  st.backChangePass(this.newpassword)
+                }else{
+                  st.backChangePass()
+                }
+                
+                }}>Quay về trang chủ</Button>
         </div>
       </div>
     );

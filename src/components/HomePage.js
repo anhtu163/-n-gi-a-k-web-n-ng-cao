@@ -17,6 +17,9 @@ export default class HomePage extends PureComponent {
   render(){
     const st = this.props;
 
+    if(st.isLogin === false){
+      return <Redirect to="/login" />;
+    }
     
     if (st.token === 'err') {
       return <Redirect to="/login" />;

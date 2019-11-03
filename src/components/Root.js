@@ -27,7 +27,7 @@ const Root = () => (
             <Route path="/infor">
               <InforUserContainer/>
             </Route>
-            <Route path = '/changepass'>
+            <Route path ="/changepass">
               <ChangePassContainer/>
             </Route>
             <Route path="/">

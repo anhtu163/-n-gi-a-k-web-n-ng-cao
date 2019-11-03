@@ -8,6 +8,7 @@ const mapStateToProps = (st)=>{
     return {
       name: st.LoginReducer.name,
       token: st.LoginReducer.token,
+      isLogin: st.HomePageReducer.isLogin,
       isPlay: st.HomePageReducer.isPlay,
       isMenu: st.HomePageReducer.isMenu,
       isUpdate: st.InforUserReducer.isUpdate
