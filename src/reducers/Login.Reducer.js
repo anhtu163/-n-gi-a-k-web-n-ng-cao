@@ -4,7 +4,9 @@ const initialState = {
     isLogin: false,
     isPlay: false,
     token: '',
-    name: ''
+    name: '',
+    isGG: false,
+    isFB: false,
   };
 
 
@@ -25,16 +27,29 @@ const initialState = {
         }
         return st;
       }
+
+      case "LOGIN_FACEBOOK":{
+        return {
+          ...state,
+          name: action.data.res.name,
+          token: action.data.res.accessToken,
+          isLogin : !state.isLogin,
+          isFB: true
+        }
+      }
+
+      case "LOGIN_GOOGLE":{
+        return {
+          ...state,
+          name: action.data.res.data.name,
+          isLogin : !state.isLogin,
+          isGG: true
+        }
+      }
+      
       case "LOGOUT": {
-        const st = { ...state };
-        st.name = '';
-        st.token = '';
-        st.isLogin = !state.isLogin;
-        st.isPlay = !state.isPlay;
-        st.username = '';
-        st.password = '';
-        st.isLogin = false;
-        return st;
+        return initialState
+        
       }
       default:
         return state;

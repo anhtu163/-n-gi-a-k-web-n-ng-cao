@@ -99,3 +99,36 @@
 .user-name:hover{
   color: yellow;
 }
+
+.my-facebook-button-class{
+  width: 165px;
+  height:46px;  
+  border-radius: 4px;
+  background: #3b5998;
+  color:white;
+  border:0px transparent;  
+  text-align: center;
+  margin:5px;
+  display: inline-block;
+}
+
+.my-facebook-button-class:hover{
+  background: #3b5998;
+  opacity: 0.6;
+}
+
+.btnGoogle { 
+  margin:5px;
+  height: 46px !important;
+  border-radius: 4px;
+  background: white !important;
+  color:black !important;
+  border:0px transparent !important;
+  text-align: center !important;
+}
+
+.btnGoogle:hover {
+  background: #db3236;
+  opacity: 0.6;
+}
+

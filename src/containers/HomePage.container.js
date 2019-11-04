@@ -6,12 +6,14 @@ import HomePage from '../components/HomePage';
 const mapStateToProps = (st)=>{
     
     return {
-      name: st.LoginReducer.name,
+      name: st.InforUserReducer.name || st.LoginReducer.name,
       token: st.LoginReducer.token,
       isLogin: st.HomePageReducer.isLogin,
       isPlay: st.HomePageReducer.isPlay,
       isMenu: st.HomePageReducer.isMenu,
-      isUpdate: st.InforUserReducer.isUpdate
+      isUpdate: st.InforUserReducer.isUpdate,
+      isFB: st.LoginReducer.isFB,
+      isGG: st.LoginReducer.isGG,
     }
   };
 
@@ -33,9 +35,7 @@ const mapStateToProps = (st)=>{
       getUser: (token)=>{
         dispatch(action.getUserRequest(token))
       },
-      getUserHome: (token)=>{
-        dispatch(action.getUserHomeRequest(token))
-      }
+      
     }
   };
 

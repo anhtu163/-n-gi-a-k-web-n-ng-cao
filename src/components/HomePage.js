@@ -55,8 +55,7 @@ export default class HomePage extends PureComponent {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={e=>{ 
-                    e.preventDefault()   
-                    st.getUserHome(st.token)              
+                    e.preventDefault()                 
                     st.openMenu(e.currentTarget) 
                 }}
                 color="inherit">
@@ -74,14 +73,16 @@ export default class HomePage extends PureComponent {
                 keepMounted
                 transformOrigin={{
                   vertical:  -50,
-                  horizontal: 280,
+                  horizontal: 50,
                 }}
                 open={Boolean(st.isMenu)}>
-                <MenuItem disabled>{st.name}</MenuItem>
+                {!st.isGG && !st.isFB && (
+
                 <MenuItem onClick={e=>{
                   e.preventDefault() 
                   st.closeMenu()
                   st.getUser(st.token)}}> Cập nhật thông tin cá nhân</MenuItem>
+                )}
                 <MenuItem onClick={e=>{
                   e.preventDefault() 
                   st.closeMenu()

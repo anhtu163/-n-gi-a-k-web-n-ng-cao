@@ -26,7 +26,7 @@ export default class ChangePass extends React.PureComponent {
     const st = this.props;
 
     if(st.isChangePass === false){
-      return <Redirect to="/home" />;
+      return <Redirect to="/infor" />;
     }
   
     if(this.err === 1){
@@ -131,13 +131,7 @@ export default class ChangePass extends React.PureComponent {
         </Container>
         <div className="user-info">
         <Button className='back-home' color='primary' onClick={()=>{
-                // st.logIn(st.username,this.newpassword)
-                
-                if(this.newpassword!==null){
-                  st.backChangePass(this.newpassword)
-                }else{
                   st.backChangePass()
-                }
                 
                 }}>Quay về trang chủ</Button>
         </div>

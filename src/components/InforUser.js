@@ -124,7 +124,7 @@ export default class InforUser extends React.PureComponent {
                   color="primary"
                   onClick={event => {
                     event.preventDefault();
-                  //  st.accessChangePass();
+                    st.accessChangePass();
                   }}>
                   Đổi mật khẩu
                 </Button>
@@ -135,8 +135,7 @@ export default class InforUser extends React.PureComponent {
         </Container>
         <div className="user-info">
         <Button className='back-home' color='primary' onClick={()=>{
-                st.backUpdate()
-                st.logIn(st.username,st.password)
+                st.backUpdate(this.name)
                 }}>Quay về trang chủ</Button>
         </div>
       </div>

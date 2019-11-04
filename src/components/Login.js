@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import '../App.css';
 import { Redirect } from 'react-router-dom';
+import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
 
 export default class Login extends React.Component {
   constructor() {
@@ -21,11 +23,20 @@ export default class Login extends React.Component {
     this.err = '';
   }
 
+  responseGoogle(response) {
+    console.log(response);
+  }
+
+  // responseFacebook(res) {
+  //   const st = this.props;
+  //   st.LoginFB(res)
+  //   console.log(res);
+  // }
+
   render() {
     const st = this.props;
-    
-    if (st.token === 'err') {
 
+    if (st.token === 'err') {
       this.err = 'Username hoặc Password không đúng!!!';
     }
 
@@ -58,7 +69,6 @@ export default class Login extends React.Component {
                 id="username"
                 label="Username"
                 name="username"
-                autoComplete="username"
                 autoFocus
               />
               <TextField
@@ -73,7 +83,7 @@ export default class Login extends React.Component {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
+                
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -87,10 +97,36 @@ export default class Login extends React.Component {
                 color="primary"
                 onClick={event => {
                   event.preventDefault();
+                //  console.log(this.username + "and" +this.password)
                   st.Login(this.username, this.password);
-                }}>
+                  console.log(st.name)
+                }}
+              >
                 Sign In
               </Button>
+              <div
+                style={{ display: 'flex', flexWrap: 'wrap'}}
+              >
+                <FacebookLogin
+                  appId="385118689034200"
+                  autoLoad={true}
+                  fields="name,email,picture"
+                  callback={(res) => {
+                    st.LoginFB(res)
+                  }}
+                  cssClass="my-facebook-button-class"
+                  icon="fa-facebook"
+                  textButton = "&nbsp;&nbsp;Sign In with Facebook" 
+                />
+
+                <GoogleLogin
+                  clientId="318049775744-uahm30auvob7k36qr4hjtvitlnsgmfid.apps.googleusercontent.com"
+                  onSuccess={this.responseGoogle}
+                  onFailure={this.responseGoogle}
+                  className="btnGoogle">
+                  <span>Sign In with Google</span>
+                </GoogleLogin>
+              </div>
               <Grid className="footer-login" container>
                 <Grid item xs>
                   <Link href="/" variant="body2">

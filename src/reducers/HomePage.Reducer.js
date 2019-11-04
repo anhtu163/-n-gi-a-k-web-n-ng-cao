@@ -17,8 +17,7 @@ const HomePageReducer = (state = initialState,action) => {
             }
         case "BACK":
             return{
-                ...state,
-                isPlay: false
+                initialState
             }
         case "OPEN_MENU":
             return{
@@ -27,8 +26,7 @@ const HomePageReducer = (state = initialState,action) => {
             }
         case "CLOSE_MENU":
             return{
-                ...state,
-                isMenu: false
+                initialState
             }
         default:
             return state;

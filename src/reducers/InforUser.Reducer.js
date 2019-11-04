@@ -20,18 +20,12 @@ const initialState = {
             
         }
       }
-      case "GET_USER_HOME":{
-        return{
-          ...state,
-          username : action.data.res.data.username,
-          name : action.data.res.data.name,
-          phone : action.data.res.data.phone
-        }
-      }
+     
       case "BACK_UPDATE":{
         return{
-            ...state,
-            isUpdate: false
+          ...state,
+          isUpdate: false,
+          name: action.data.name,
         }
       }
       case "UPDATE": {

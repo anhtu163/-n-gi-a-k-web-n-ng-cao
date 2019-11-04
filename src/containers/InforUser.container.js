@@ -21,14 +21,12 @@ const mapDispatchToProps = dispatch => {
     getUser: (token) => {
       dispatch(actions.getUserRequest(token));
     },
-    getUserHome: (token)=>{
-      dispatch(actions.getUserRequest(token))
-    },
+    
     accessChangePass :()=>{
       dispatch(actions.accessChangePass())
     },
-    backUpdate: () => {
-        dispatch(actions.backUpdate())
+    backUpdate: (name) => {
+        dispatch(actions.backUpdate(name))
     },
     updateUser: (username,name,phone) =>{
         dispatch(actions.updateRequest(username,name,phone))

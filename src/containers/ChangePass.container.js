@@ -19,15 +19,9 @@ const mapDispatchToProps = dispatch => {
     changePass: (username,password,newpassword)=>{
          dispatch(actions.changePasswordRequest(username,password,newpassword))
     },
-    backChangePass : (newpassword) => {
-        dispatch(actions.backChangePass(newpassword))
+    backChangePass : () => {
+        dispatch(actions.backChangePass())
     },
-    backChangePass1 : () => {
-      dispatch(actions.backChangePass1())
-    },
-    logIn : (username,password)=>{
-      dispatch(actions.loginRequest(username,password))
-    }
 
   };
 };

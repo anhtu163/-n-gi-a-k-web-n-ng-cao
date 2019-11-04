@@ -9,7 +9,9 @@ const mapstToProps = state => {
     password: st.password,
     isLogin: st.isLogin,
     isPlay: state.HomePageReducer.isPlay,
-    token: st.token
+    token: st.token,
+    isFB : st.isFB,
+    isGG : st.isGG
   };
 };
 
@@ -17,6 +19,9 @@ const mapDispatchToProps = dispatch => {
   return {
     Login: (username, password) => {
       dispatch(actions.loginRequest(username, password));
+    },
+    LoginFB: (res)=>{
+      dispatch(actions.loginfb(res))
     }
   };
 };

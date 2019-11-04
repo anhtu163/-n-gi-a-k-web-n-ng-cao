@@ -4,6 +4,8 @@ export const HISTORIES = 'HISTORIES'
 export const WINNER = 'WINNER'
 export const JUMP_TO = 'JUMP_TO'
 export const SORT = 'SORT'
+export const LOGIN_GOOGLE = 'LOGIN_GOOGLE'
+export const LOGIN_FACEBOOK = 'LOGIN_FACEBOOK'
 export const LOGIN = 'LOGIN'
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const REGISTER = 'REGISTER'
@@ -15,11 +17,9 @@ export const OPEN_MENU = 'OPEN_MENU'
 export const CLOSE_MENU = 'CLOSE_MENU'
 export const GET_USER = 'GET_USER'
 export const UPDATE = 'UPDATE'
-export const GET_USER_HOME = 'GET_USER_HOME'
 export const ACCESS_CHANGE_PASS = 'ACCESS_CHANGE_PASS'
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD'
 export const BACK_CHANGE_PASS = 'BACK_CHANGE_PASS'
-export const BACK_CHANGE_PASS_1 = 'BACK_CHANGE_PASS_1'
 
 
 export const saveHistory = (history,squares,currentMove,i,COL,ROW) =>({
@@ -56,6 +56,23 @@ export const sortF = () =>({
     type: SORT,  
 })
 
+// login facebook
+export const loginfb = (res) =>({
+    type: LOGIN_FACEBOOK,
+    data:{
+      res
+    }
+})
+
+// login gg
+
+export const logingg = (res) =>({
+  type: LOGIN_GOOGLE,
+  data:{
+    res
+  }
+})
+
 // log in
 
 function OnClickLogin(username,password) {
@@ -65,7 +82,7 @@ function OnClickLogin(username,password) {
     }).catch(error =>{
         return error;
     })
-    console.log(res)
+    // console.log(res)
     return res;
 }
 
@@ -76,9 +93,7 @@ export const login = (username,password,res) => ({
         username,
         password,
         res
-    }
-   
-    
+    } 
 })
 
 export const loginRequest = (username, password) =>{
@@ -93,7 +108,7 @@ export const loginRequest = (username, password) =>{
 
 function OnclickRegister(name,phone, username, password) {
     const res = axios
-      .post('https://restfulapi1612839.herokuapp.com/user/register', {
+      .post('http://localhost:4000/user/register', {
         name,
         phone,
         username,
@@ -149,24 +164,20 @@ function OnclickRegister(name,phone, username, password) {
 
   // back from updatepage to homepage
 
-  export const backUpdate = () =>{
+  export const backUpdate = (name) =>{
     return {
       type: BACK_UPDATE,
-    }
-  }
-
-  export const backChangePass = (newpassword) =>{
-    return {
-      type: BACK_CHANGE_PASS,
       data:{
-        newpassword
+        name
       }
     }
   }
 
-  export const backChangePass1 = () =>{
+ 
+
+  export const backChangePass = () =>{
     return {
-      type: BACK_CHANGE_PASS_1,
+      type: BACK_CHANGE_PASS,
     }
   }
 
@@ -211,15 +222,7 @@ function OnclickRegister(name,phone, username, password) {
     }
   }
 
-  export const getUserHome = (token,res)=>{
-    return {
-      type: GET_USER_HOME,
-      data:{
-        token,
-        res
-      }
-    }
-  }
+  
 
   export const getUserRequest = (token)=>{
     return( dispatch=>{
@@ -229,13 +232,7 @@ function OnclickRegister(name,phone, username, password) {
     })
   }
 
-  export const getUserHomeRequest = (token)=>{
-    return( dispatch=>{
-      return onClickGetUser(token).then(res=>{
-        dispatch(getUserHome(token,res));
-      })
-    })
-  }
+
 
 
 
