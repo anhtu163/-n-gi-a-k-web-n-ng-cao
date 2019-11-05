@@ -76,7 +76,7 @@ export const logingg = (res) =>({
 // log in
 
 function OnClickLogin(username,password) {
-    const res = axios.post('http://localhost:4000/user/login',{
+    const res = axios.post('https://restfulapi1612839.herokuapp.com/user/login',{
         username,
         password
     }).catch(error =>{
@@ -108,7 +108,7 @@ export const loginRequest = (username, password) =>{
 
 function OnclickRegister(name,phone, username, password) {
     const res = axios
-      .post('http://localhost:4000/user/register', {
+      .post('https://restfulapi1612839.herokuapp.com/user/register', {
         name,
         phone,
         username,
@@ -154,24 +154,7 @@ function OnclickRegister(name,phone, username, password) {
     }
   }
 
-  // back from gamepage to homepage
-
-  // export const back = () =>{
-  //   return {
-  //     type: BACK
-  //   }
-  // }
-
-  // back from updatepage to homepage
-
-  // export const backUpdate = (name) =>{
-  //   return {
-  //     type: BACK_UPDATE,
-  //     data:{
-  //       name
-  //     }
-  //   }
-  // }
+ 
 
 
   // open and close menu on Homepage
@@ -195,7 +178,7 @@ function OnclickRegister(name,phone, username, password) {
   // Get info user
 
   function onClickGetUser(token){
-    const res = axios.get('http://localhost:4000/me',{
+    const res = axios.get('https://restfulapi1612839.herokuapp.com/me',{
       headers:{Authorization: `Bearer ${token}`}
     }).catch(err=>{
       return err
@@ -231,7 +214,7 @@ function OnclickRegister(name,phone, username, password) {
   // update info user
 
   function onClickUpdate(username,name,phone,image){
-    const res = axios.post('http://localhost:4000/user/update',{
+    const res = axios.post('https://restfulapi1612839.herokuapp.com/user/update',{
       username,
       name,
       phone,
@@ -268,7 +251,7 @@ function OnclickRegister(name,phone, username, password) {
  
 
   function onClickChangePassword(username,password,newpassword){
-    const res = axios.post('http://localhost:4000/user/changepass',{
+    const res = axios.post('https://restfulapi1612839.herokuapp.com/user/changepass',{
       username,
       password,
       newpassword
