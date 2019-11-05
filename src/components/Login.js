@@ -115,7 +115,7 @@ export default class Login extends React.Component {
                 />
 
                 <GoogleLogin
-                  clientId="318049775744-uahm30auvob7k36qr4hjtvitlnsgmfid.apps.googleusercontent.com"
+                  clientId="238492626126-5a2bmakstk00betvpggraphedmehguo2.apps.googleusercontent.com"
                   onSuccess={(res)=>{
                     st.LoginGG(res)
                   }}
