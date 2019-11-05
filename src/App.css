@@ -106,7 +106,7 @@
 
 .account{
   position: relative;
-  right : -50%;
+  right : -40%;
   
 }
 
@@ -116,7 +116,7 @@
 
 .user-name{
   position: relative;
-  right : -50%;
+  right : -40%;
 }
 
 .user-name:hover{
@@ -157,6 +157,6 @@
 
 .avatar{
   position: relative;
-  right : -51%;
+  right : -41%;
 }
 
