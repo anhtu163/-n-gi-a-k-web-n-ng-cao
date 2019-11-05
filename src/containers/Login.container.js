@@ -3,15 +3,14 @@ import * as actions from '../actions/actions';
 import Login from '../components/Login';
 
 const mapstToProps = state => {
-  const st = state.LoginReducer;
   return {
-    username: st.username,
-    password: st.password,
-    isLogin: st.isLogin,
-    isPlay: state.HomePageReducer.isPlay,
-    token: st.token,
-    isFB : st.isFB,
-    isGG : st.isGG
+    username: state.InforUserReducer.username,
+    password: state.InforUserReducer.password,
+    isLogin: state.InforUserReducer.isLogin,
+    // isPlay: state.HomePageReducer.isPlay,
+    token: state.InforUserReducer.token,
+    // isFB : st.isFB,
+    // isGG : st.isGG
   };
 };
 
@@ -22,6 +21,9 @@ const mapDispatchToProps = dispatch => {
     },
     LoginFB: (res)=>{
       dispatch(actions.loginfb(res))
+    },
+    LoginGG: (res)=>{
+      dispatch(actions.logingg(res))
     }
   };
 };

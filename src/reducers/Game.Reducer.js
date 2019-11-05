@@ -8,7 +8,7 @@ export const initialState = {
     xIsNext: true,
     winner: null,
     isSort: true,
-    isPlay: false,
+    // isPlay: false,
     
     
 };
@@ -61,13 +61,9 @@ const GameReducers = (state = initialState,action) =>{
               isSort: !state.isSort
           }
       )
-    case "BACK":
-      return{
-        initialState
-
-      }
+    
     default:
-        return state
+        return initialState
   }
 
 }

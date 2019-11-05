@@ -1,9 +1,9 @@
 export const initialState = {
-    token: '',
-    name: '',
+    // token: '',
+    // name: '',
     isPlay: false,
     isMenu: false,
-    isLogin: true,
+    // isLogin: true,
     
   };
 
@@ -12,7 +12,6 @@ const HomePageReducer = (state = initialState,action) => {
         case "PLAY":
             return {
                 ...state,
-                token: action.data.token,
                 isPlay: true
             }
         case "BACK":
@@ -26,10 +25,11 @@ const HomePageReducer = (state = initialState,action) => {
             }
         case "CLOSE_MENU":
             return{
-                initialState
+                ...state,
+                isMenu: false
             }
         default:
-            return state;
+            return initialState;
 
     }
 }

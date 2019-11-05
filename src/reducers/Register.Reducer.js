@@ -1,11 +1,10 @@
 
 
-const initialState = {
-  username: '',
-  password: '',
-  isRegister: false,
-  CheckLoadRegister: false,
-  name: ''
+export const initialState = {
+  // username: '',
+  // password: '',
+  isRegister: '',
+  // name: ''
 };
 
 const RegisterReducer = (state = initialState, action) => {
@@ -16,14 +15,14 @@ const RegisterReducer = (state = initialState, action) => {
       st.password = action.data.password;
       try {
         st.name = action.data.res.data.name;
-        st.isRegister = true;
-      } catch (err) {
-        st.CheckLoadRegister = true;
+        st.isRegister = 'success';
+      } catch (error) {
+        st.isRegister = 'err';
       }
       return st;
     }
     default:
-      return state;
+      return initialState;
   }
 };
 

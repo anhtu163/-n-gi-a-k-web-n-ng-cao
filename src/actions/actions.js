@@ -156,30 +156,22 @@ function OnclickRegister(name,phone, username, password) {
 
   // back from gamepage to homepage
 
-  export const back = () =>{
-    return {
-      type: BACK
-    }
-  }
+  // export const back = () =>{
+  //   return {
+  //     type: BACK
+  //   }
+  // }
 
   // back from updatepage to homepage
 
-  export const backUpdate = (name) =>{
-    return {
-      type: BACK_UPDATE,
-      data:{
-        name
-      }
-    }
-  }
-
- 
-
-  export const backChangePass = () =>{
-    return {
-      type: BACK_CHANGE_PASS,
-    }
-  }
+  // export const backUpdate = (name) =>{
+  //   return {
+  //     type: BACK_UPDATE,
+  //     data:{
+  //       name
+  //     }
+  //   }
+  // }
 
 
   // open and close menu on Homepage
@@ -208,7 +200,7 @@ function OnclickRegister(name,phone, username, password) {
     }).catch(err=>{
       return err
     })
-    console.log(res);
+    // console.log(res);
     return res;
   }
 
@@ -238,44 +230,42 @@ function OnclickRegister(name,phone, username, password) {
 
   // update info user
 
-  function onClickUpdate(username,name,phone){
+  function onClickUpdate(username,name,phone,image){
     const res = axios.post('http://localhost:4000/user/update',{
       username,
       name,
-      phone
+      phone,
+      image
     }).catch(err=>{
       return err
     })
     return res
   }
 
-  export const update = (username,name,phone,res) =>{
+  export const update = (username,name,phone,image,res) =>{
     return{
       type: UPDATE,
       data:{
         username,
         name,
         phone,
+        image,
         res
       }
     }
   }
-  export const updateRequest = (username,name,phone) =>{
+  export const updateRequest = (username,name,phone,image) =>{
 
     return (dispatch=>{
-      return onClickUpdate(username,name,phone).then(res=>{
-        dispatch(update(username,name,phone,res))
+      return onClickUpdate(username,name,phone,image).then(res=>{
+        dispatch(update(username,name,phone,image,res))
       })
     })
   }
 
   // chang password
 
-  export const accessChangePass = () => {
-    return{
-      type: ACCESS_CHANGE_PASS,
-    }
-  }
+ 
 
   function onClickChangePassword(username,password,newpassword){
     const res = axios.post('http://localhost:4000/user/changepass',{

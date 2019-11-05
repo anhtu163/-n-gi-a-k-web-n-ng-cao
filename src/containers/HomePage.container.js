@@ -6,14 +6,15 @@ import HomePage from '../components/HomePage';
 const mapStateToProps = (st)=>{
     
     return {
-      name: st.InforUserReducer.name || st.LoginReducer.name,
-      token: st.LoginReducer.token,
-      isLogin: st.HomePageReducer.isLogin,
+      name: st.InforUserReducer.name,
+      token: st.InforUserReducer.token,
+      isLogin: st.InforUserReducer.isLogin,
       isPlay: st.HomePageReducer.isPlay,
       isMenu: st.HomePageReducer.isMenu,
       isUpdate: st.InforUserReducer.isUpdate,
-      isFB: st.LoginReducer.isFB,
-      isGG: st.LoginReducer.isGG,
+      isFB: st.InforUserReducer.isFB,
+      isGG: st.InforUserReducer.isGG,
+      image: st.InforUserReducer.image
     }
   };
 

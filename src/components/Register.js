@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -24,19 +23,22 @@ export default class SignUp extends React.PureComponent {
 
   render() {
     const st = this.props;
-    if (st.isRegister) {
-      return <Redirect to="/login" />;
-    }
-    if (st.CheckLoadRegister) {
+    
+    // console.log(st.isRegister)
+    if(st.isRegister === 'err'){
       this.err = 'Có lỗi xảy ra, vui lòng thử lại!!!';
     }
+    if(st.isRegister === 'success'){
+      this.err = 'Đăng ký thành công';
+    }
+    
     return (
       <div className="loginLayout">
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className="paper">
             <center>
-              <Avatar className="avatar">
+              <Avatar className="avatar1">
                 <LockOutlinedIcon />
               </Avatar>
               <Typography component="h1" variant="h5">
@@ -114,6 +116,9 @@ export default class SignUp extends React.PureComponent {
                   onClick={event => {
                     event.preventDefault();
                     st.Register(this.name,this.phone, this.username, this.password);
+                    
+                   
+                    
                   }}>
                   Sign Up
                 </Button>

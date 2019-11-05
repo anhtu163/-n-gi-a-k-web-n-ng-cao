@@ -1,18 +1,17 @@
 import { combineReducers } from 'redux';
-import GameReducer from './Game.Reducer';
-import LoginReducer from './Login.Reducer';
+import GameReducers from './Game.Reducer';
+// import LoginReducer from './Login.Reducer';
 import RegisterReducer from './Register.Reducer';
 import HomePageReducer from './HomePage.Reducer';
 import InforUserReducer from './InforUser.Reducer';
-import ChangePassReducer from './ChangePass.Reducer';
+
 
 const myReducer = combineReducers({
-  GameReducer,
-  LoginReducer,
+  GameReducers,
   RegisterReducer,
   HomePageReducer,
   InforUserReducer,
-  ChangePassReducer
+  
   
 });
 export default myReducer;

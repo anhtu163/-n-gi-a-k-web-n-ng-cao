@@ -9,7 +9,7 @@
   flex-direction: 'column';
   align-items: 'center';
 }
-.avatar {
+.avatar1 {
   margin: 10px 0px 10px 0px;
 }
 .form {
@@ -18,6 +18,29 @@
 }
 .Remember {
   margin: 5px 0px 5px;
+}
+
+.wrap{
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn{
+  color: white !important;
+  background-color: #3F51B5 !important;
+  width: auto !important;
+  margin-left: 10px !important;
+  margin-top: 10px !important;
+}
+
+
+.wrap input[type=file]{
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
 
 .footer-login {
@@ -130,5 +153,10 @@
 .btnGoogle:hover {
   background: #db3236;
   opacity: 0.6;
+}
+
+.avatar{
+  position: relative;
+  right : -51%;
 }
 

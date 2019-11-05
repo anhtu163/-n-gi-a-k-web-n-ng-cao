@@ -4,16 +4,15 @@ import Game from '../components/Game';
 
 
 const mapStateToProps = (st)=>{
-    const state = st.GameReducer;
+    const state = st.GameReducers;
     return {
       history: state.history,
       stepNumber: state.stepNumber,
       xIsNext: state.xIsNext,
       winner: state.winner,
       isSort: state.isSort,
-      name: st.LoginReducer.name,
-      token: st.LoginReducer.token,
-      isPlay: st.HomePageReducer.isPlay
+      isLogin: st.InforUserReducer.isLogin,
+      
     }
   };
   
@@ -32,9 +31,9 @@ const mapStateToProps = (st)=>{
       sortHistory: ()=>{
         dispatch(action.sortF())
       },
-      back: ()=>{
-        dispatch(action.back())
-      }
+      // back: ()=>{
+      //   dispatch(action.back())
+      // }
     }
   };
 

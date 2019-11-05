@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 // import { Redirect } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -18,23 +18,16 @@ export default class ChangePass extends React.PureComponent {
     super();
     this.password = "";
     this.newpassword = "";
-    this.confirm = "";
-    this.err = "";
+   
   }
 
   render() {
     const st = this.props;
 
-    if(st.isChangePass === false){
-      return <Redirect to="/infor" />;
-    }
-  
-    if(this.err === 1){
-      this.err = "Mật khẩu nhập lại không trùng khớp"
-    }
-    if(this.err === 2){
-      this.err = "Mật khẩu không đúng"
-    }
+    // if(st.isChangePass === false){
+    //   return <Redirect to="/infor" />;
+    // }
+
 
     
 
@@ -45,7 +38,7 @@ export default class ChangePass extends React.PureComponent {
           <CssBaseline />
           <div className="paper">
             <center>
-              <Avatar className="avatar">
+              <Avatar className="avatar1">
                 <LockOutlinedIcon />
               </Avatar>
               <Typography component="h1" variant="h5">
@@ -63,9 +56,11 @@ export default class ChangePass extends React.PureComponent {
                     fullWidth
                     id="Password"
                     type = "password"
+                    defaultValue = {st.password}
                     onChange={event => {
                       this.password = event.target.value;
                     }}
+                    disabled
                     label="Mật khẩu hiện tại"
                     autoFocus
                   />
@@ -86,20 +81,7 @@ export default class ChangePass extends React.PureComponent {
                     label="Mật khẩu mới"
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="confirm"
-                    type = "password"
-                    onChange={event => {
-                      this.confirm = event.target.value;
-                    }}
-                    label="Nhập lại mật khẩu mới"
-                    name="confirm"
-                  />
-                </Grid>
+                
               </Grid>
               <div className="Error">{this.err}</div>
               <div className="GridForm">
@@ -109,18 +91,9 @@ export default class ChangePass extends React.PureComponent {
                   color="primary"
                   onClick={event => {
                     event.preventDefault();
-                    if(this.password !== st.password)
-                    {
-                      this.err = 2
-                    }
-                    else if(this.confirm === this.newpassword){
-                      st.changePass(st.username,this.password,this.newpassword);
-                      this.password = ""
-                      this.newpassword = ""
-                      this.confirm=""
-                    }else{
-                      this.err = 1
-                    }
+                    st.changePass(st.username,st.password,this.newpassword);
+                    console.log(st.password)
+                    this.err = "Cập nhật thành công"
                   }}>
                   Đổi mật khẩu
                 </Button>
@@ -131,9 +104,9 @@ export default class ChangePass extends React.PureComponent {
         </Container>
         <div className="user-info">
         <Button className='back-home' color='primary' onClick={()=>{
-                  st.backChangePass()
+                  window.location.href = '/infor'
                 
-                }}>Quay về trang chủ</Button>
+                }}>Quay về trang cập nhật thông tin</Button>
         </div>
       </div>
     );

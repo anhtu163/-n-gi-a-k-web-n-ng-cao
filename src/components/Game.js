@@ -44,22 +44,17 @@ class Game extends Component {
 
 
 
-    if (st.token === 'err') {
+    
+    if (!st.isLogin) {
       return <Redirect to="/login" />;
     }
-    if (st.token === '') {
-      return <Redirect to="/login" />;
-    }
-    if(!st.isPlay){
-      return <Redirect to="/home" />;
-    }
-
+    
     const history = st.history.slice();
     const current = history[st.stepNumber];
     const squares = current.squares.slice();
 
     if(AI(squares) !== -1 && st.xIsNext === false){
-      console.log(AI(squares))
+      // console.log(AI(squares))
       this.handleClick(AI(squares))
     }
     
@@ -98,7 +93,7 @@ class Game extends Component {
         </div>
         <div className="user-info">
         <Button className='back-home' color='primary' onClick={()=>{
-                st.back()
+                window.location.href = "/home"
                 }}>Quay về trang chủ</Button>
         </div>
       </div>

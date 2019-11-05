@@ -3,14 +3,13 @@ import * as actions from '../actions/actions';
 import Register from '../components/Register';
 
 const mapStateToProps = state => {
-  const RegisterState = state.RegisterReducer;
+  const st = state.RegisterReducer;
   return {
-    username: RegisterState.username,
-    password: RegisterState.password,
-    isRegister: RegisterState.isRegister,
-    phone: RegisterState.phone,
-    name: RegisterState.name,
-    CheckLoadRegister: RegisterState.CheckLoadRegister
+    // username: st.username,
+    // password: st.password,
+    isRegister: st.isRegister,
+    // phone: st.phone,
+    // name: st.name,
   };
 };
 

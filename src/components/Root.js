@@ -23,7 +23,7 @@ const Root = () => (
             </Route>
             <Route path="/home">
               <HomePageContainer/>
-            </Route>
+            </Route> 
             <Route path="/infor">
               <InforUserContainer/>
             </Route>

@@ -1,19 +1,19 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import '../App.css';
-import { Redirect } from 'react-router-dom';
-import FacebookLogin from 'react-facebook-login';
-import GoogleLogin from 'react-google-login';
+
+
 
 export default class Login extends React.Component {
   constructor() {
@@ -23,9 +23,9 @@ export default class Login extends React.Component {
     this.err = '';
   }
 
-  responseGoogle(response) {
-    console.log(response);
-  }
+  // responseGoogle(response) {
+  //   console.log(response);
+  // }
 
   // responseFacebook(res) {
   //   const st = this.props;
@@ -50,7 +50,7 @@ export default class Login extends React.Component {
           <CssBaseline />
           <div className="paper">
             <center>
-              <Avatar className="avatar">
+              <Avatar className="avatar1">
                 <LockOutlinedIcon className="LockOutlinedIcon" />
               </Avatar>
               <Typography component="h1" variant="h5">
@@ -85,11 +85,7 @@ export default class Login extends React.Component {
                 id="password"
                 
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-                className="Remember"
-              />
+              
               <div className="Error">{this.err}</div>
               <Button
                 fullWidth
@@ -99,7 +95,7 @@ export default class Login extends React.Component {
                   event.preventDefault();
                 //  console.log(this.username + "and" +this.password)
                   st.Login(this.username, this.password);
-                  console.log(st.name)
+                  // console.log(st.name)
                 }}
               >
                 Sign In
@@ -109,7 +105,6 @@ export default class Login extends React.Component {
               >
                 <FacebookLogin
                   appId="385118689034200"
-                  autoLoad={true}
                   fields="name,email,picture"
                   callback={(res) => {
                     st.LoginFB(res)
@@ -121,21 +116,17 @@ export default class Login extends React.Component {
 
                 <GoogleLogin
                   clientId="318049775744-uahm30auvob7k36qr4hjtvitlnsgmfid.apps.googleusercontent.com"
-                  onSuccess={this.responseGoogle}
-                  onFailure={this.responseGoogle}
+                  onSuccess={(res)=>{
+                    st.LoginGG(res)
+                  }}
                   className="btnGoogle">
                   <span>Sign In with Google</span>
                 </GoogleLogin>
               </div>
               <Grid className="footer-login" container>
-                <Grid item xs>
-                  <Link href="/" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
                 <Grid item>
                   <Link href="/register" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                    Don&apos;t have an account? Sign Up
                   </Link>
                 </Grid>
               </Grid>
