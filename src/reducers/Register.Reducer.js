@@ -1,10 +1,8 @@
 
 
 export const initialState = {
-  // username: '',
-  // password: '',
   isRegister: '',
-  // name: ''
+  
 };
 
 const RegisterReducer = (state = initialState, action) => {

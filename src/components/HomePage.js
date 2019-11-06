@@ -22,7 +22,6 @@ export default class HomePage extends PureComponent {
       return <Redirect to="/login" />;
     }
 
-    console.log(st.image)
     
     return (
       <div>
@@ -35,9 +34,9 @@ export default class HomePage extends PureComponent {
               className="menu"
               color="inherit"
               onClick={() => {
-                window.location.href = '/';
+                window.location.href = '/play';
               }}
-              // st.play(st.name,st.token);
+             
             >
               Chơi với máy
             </Button>
@@ -45,7 +44,7 @@ export default class HomePage extends PureComponent {
               className="menu"
               color="inherit"
               onClick={() => {
-                window.location.href = '/';
+                window.location.href = '/play';
               }}
             >
               Tìm phòng
@@ -87,11 +86,6 @@ export default class HomePage extends PureComponent {
                   onClick={() => {
                     window.location.href = './infor';
                   }}
-                  // onClick={e => {
-                  //   e.preventDefault();
-                  //   st.closeMenu();
-                  //   st.getUser(st.token);
-                  // }}
                 >
                   Cập nhật thông tin cá nhân
                 </MenuItem>

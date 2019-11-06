@@ -1,11 +1,9 @@
 import React from 'react';
-// import { Redirect } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -24,13 +22,9 @@ export default class ChangePass extends React.PureComponent {
   render() {
     const st = this.props;
 
-    // if(st.isChangePass === false){
-    //   return <Redirect to="/infor" />;
-    // }
-
-
-    
-
+    if (!st.isLogin) {
+      return <Redirect to="/login" />;
+    }
     
     return (
       <div className="loginLayout">
@@ -92,7 +86,6 @@ export default class ChangePass extends React.PureComponent {
                   onClick={event => {
                     event.preventDefault();
                     st.changePass(st.username,st.password,this.newpassword);
-                    console.log(st.password)
                     this.err = "Cập nhật thành công"
                   }}>
                   Đổi mật khẩu

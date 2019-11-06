@@ -24,7 +24,7 @@ export default class SignUp extends React.PureComponent {
   render() {
     const st = this.props;
     
-    // console.log(st.isRegister)
+   
     if(st.isRegister === 'err'){
       this.err = 'Có lỗi xảy ra, vui lòng thử lại!!!';
     }

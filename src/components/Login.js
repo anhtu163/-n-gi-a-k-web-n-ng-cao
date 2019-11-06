@@ -23,15 +23,7 @@ export default class Login extends React.Component {
     this.err = '';
   }
 
-  // responseGoogle(response) {
-  //   console.log(response);
-  // }
-
-  // responseFacebook(res) {
-  //   const st = this.props;
-  //   st.LoginFB(res)
-  //   console.log(res);
-  // }
+  
 
   render() {
     const st = this.props;
@@ -41,7 +33,7 @@ export default class Login extends React.Component {
     }
 
     if (st.isLogin) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/" />;
     }
 
     return (
@@ -93,9 +85,9 @@ export default class Login extends React.Component {
                 color="primary"
                 onClick={event => {
                   event.preventDefault();
-                //  console.log(this.username + "and" +this.password)
+                
                   st.Login(this.username, this.password);
-                  // console.log(st.name)
+                
                 }}
               >
                 Sign In

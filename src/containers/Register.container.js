@@ -5,11 +5,7 @@ import Register from '../components/Register';
 const mapStateToProps = state => {
   const st = state.RegisterReducer;
   return {
-    // username: st.username,
-    // password: st.password,
-    isRegister: st.isRegister,
-    // phone: st.phone,
-    // name: st.name,
+    isRegister: st.isRegister, 
   };
 };
 

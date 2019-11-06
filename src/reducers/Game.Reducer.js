@@ -8,7 +8,6 @@ export const initialState = {
     xIsNext: true,
     winner: null,
     isSort: true,
-    // isPlay: false,
     
     
 };

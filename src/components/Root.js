@@ -21,18 +21,18 @@ const Root = () => (
             <Route path="/register">
               <RegisterContainer/>
             </Route>
-            <Route path="/home">
-              <HomePageContainer/>
-            </Route> 
             <Route path="/infor">
               <InforUserContainer/>
             </Route>
             <Route path ="/changepass">
               <ChangePassContainer/>
             </Route>
-            <Route path="/">
+            <Route path="/play">
               <GameContainer/>
             </Route>
+            <Route path="/">
+              <HomePageContainer/>
+            </Route> 
            
               
         </Switch>  

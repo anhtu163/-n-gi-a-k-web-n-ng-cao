@@ -93,7 +93,7 @@ class Game extends Component {
         </div>
         <div className="user-info">
         <Button className='back-home' color='primary' onClick={()=>{
-                window.location.href = "/home"
+                window.location.href = "/"
                 }}>Quay về trang chủ</Button>
         </div>
       </div>

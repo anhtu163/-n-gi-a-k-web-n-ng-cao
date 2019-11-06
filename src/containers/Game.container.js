@@ -31,9 +31,7 @@ const mapStateToProps = (st)=>{
       sortHistory: ()=>{
         dispatch(action.sortF())
       },
-      // back: ()=>{
-      //   dispatch(action.back())
-      // }
+     
     }
   };
 

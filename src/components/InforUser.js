@@ -25,7 +25,7 @@ export default class InforUser extends React.PureComponent {
   render() {
     const st = this.props;
 
-    // console.log(st)
+    
 
     this.username = st.username;
     this.password = st.password;
@@ -36,12 +36,8 @@ export default class InforUser extends React.PureComponent {
       return <Redirect to="/login" />;
     }
 
-    // if(!st.isChangePass){
-    //   return <Redirect to="/home" />;
-    // }
-    // if(st.isChangePass){
-    //   return <Redirect to="/changepass" />;
-    // }
+
+    this.image = st.image;
 
     return (
       <div className="loginLayout">
@@ -52,7 +48,8 @@ export default class InforUser extends React.PureComponent {
             <Typography component="h1" variant="h5">
                 Cập nhật thông tin cá nhân
               </Typography>
-              <Avatar className="avatar1" alt="Remy Sharp" src={st.image} style={{maxWidth: '100px', maxHeight: '100px', minWidth: '100px', minHeight: '100px', border: '2px solid #3F51B5'}}/> 
+              <Avatar className="avatar1" alt="Remy Sharp" src={st.image} 
+              style={{maxWidth: '100px', maxHeight: '100px', minWidth: '100px', minHeight: '100px', border: '2px solid #3F51B5'}}/> 
             </center>
             <form className="form" noValidate>
               <Grid container spacing={2}>
@@ -172,7 +169,7 @@ export default class InforUser extends React.PureComponent {
             className="back-home"
             color="primary"
             onClick={() => {
-              window.location.href = '/home';
+              window.location.href = '/';
             }}
           >
             Quay về trang chủ

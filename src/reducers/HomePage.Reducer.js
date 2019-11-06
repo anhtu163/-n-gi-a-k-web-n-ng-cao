@@ -1,9 +1,8 @@
 export const initialState = {
-    // token: '',
-    // name: '',
+    
     isPlay: false,
     isMenu: false,
-    // isLogin: true,
+    
     
   };
 

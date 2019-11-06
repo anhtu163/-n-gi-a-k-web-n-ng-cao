@@ -8,6 +8,7 @@ const mapstToProps = state => {
     username: state.InforUserReducer.username,
     password: state.InforUserReducer.password,
     token: state.InforUserReducer.token,
+    isLogin: state.InforUserReducer.isLogin,
     
   };
 };
